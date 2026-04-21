@@ -65,6 +65,22 @@ public class IAEnemigo : MonoBehaviour
 
     public void Morir()
   {
+
+if (estaMuerto) return; // Evita que se cuente dos veces si le pegas rápido
+
+    // --- NUEVO: AVISAR AL GAME MANAGER ---
+    if (GameManager.instancia != null) {
+        GameManager.instancia.SumarKill();
+    }
+
+    estaMuerto = true;
+    rb.linearVelocity = Vector2.zero; 
+    rb.bodyType = RigidbodyType2D.Kinematic;
+    rb.freezeRotation = true; 
+    spriteRenderer.sprite = spriteMuerto;
+    GetComponent<Collider2D>().enabled = false; 
+    this.enabled = false;
+
     estaMuerto = true;
     
     // 1. Detenemos cualquier movimiento actual
