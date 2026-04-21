@@ -917,6 +917,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MovimientoTopDown
   velocidad: 10
+  radioAtaque: 1.5
+  teclaAtaque: 32
 --- !u!1 &566759787
 GameObject:
   m_ObjectHideFlags: 0
@@ -1591,7 +1593,7 @@ GameObject:
   - component: {fileID: 1790953920}
   m_Layer: 0
   m_Name: sprites ZOMB PNG
-  m_TagString: Untagged
+  m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1706,7 +1708,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::IAEnemigo
   velocidad: 2
   distanciaDeteccion: 50
-  spriteMuerto: {fileID: 0}
+  spriteMuerto: {fileID: -8508804572025392723, guid: dbdefd54540cc4b4994ad653d42915db, type: 3}
   puntosPatrulla:
   - {fileID: 0}
   - {fileID: 0}

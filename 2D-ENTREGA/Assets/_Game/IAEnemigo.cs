@@ -64,12 +64,21 @@ public class IAEnemigo : MonoBehaviour
     }
 
     public void Morir()
-    {
-        estaMuerto = true;
-        rb.linearVelocity = Vector2.zero;
-        rb.freezeRotation = true; // Deja de rotar al morir
-        spriteRenderer.sprite = spriteMuerto;
-        GetComponent<Collider2D>().enabled = false;
-        this.enabled = false;
-    }
+  {
+    estaMuerto = true;
+    
+    // 1. Detenemos cualquier movimiento actual
+    rb.linearVelocity = Vector2.zero; 
+    
+    // 2. ¡ESTA ES LA CLAVE!: Cambiamos el cuerpo a "Kinematic"
+    // Esto hace que la física deje de afectarle por completo
+    rb.bodyType = RigidbodyType2D.Kinematic;
+    
+    // 3. Lo visual y colisiones
+    rb.freezeRotation = true; 
+    spriteRenderer.sprite = spriteMuerto;
+    GetComponent<Collider2D>().enabled = false; 
+    
+    this.enabled = false; // Apagamos el script
+  }
 }
