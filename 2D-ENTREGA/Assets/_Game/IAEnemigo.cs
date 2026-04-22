@@ -63,6 +63,19 @@ public class IAEnemigo : MonoBehaviour
         rb.linearVelocity = dir * velocidad;
     }
 
+    // Detectar cuando toca al jugador
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (estaMuerto) return;
+        
+        MovimientoTopDown jugador = collision.GetComponent<MovimientoTopDown>();
+        if (jugador != null)
+        {
+            jugador.RecibirDaño(1);
+            Debug.Log("¡Un zombi ha mordido al jugador!");
+        }
+    }
+
     public void Morir()
   {
 

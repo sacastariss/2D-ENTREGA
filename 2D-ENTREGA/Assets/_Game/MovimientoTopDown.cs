@@ -11,6 +11,10 @@ public class MovimientoTopDown : MonoBehaviour
     public float radioAtaque = 1.5f; 
     public KeyCode teclaAtaque = KeyCode.Space; 
     
+    [Header("Ajustes de Salud")]
+    public int salud = 3;
+    private bool estaMuerto = false;
+    
     private SpriteRenderer spriteRenderer;
     private Color colorOriginal;
 
@@ -23,6 +27,8 @@ public class MovimientoTopDown : MonoBehaviour
 
     void Update()
     {
+        if (estaMuerto) return; // Si está muerto, no hace nada
+        
         float moveX = Input.GetAxisRaw("Horizontal");
         float moveY = Input.GetAxisRaw("Vertical");
         movimiento = new Vector2(moveX, moveY).normalized;
@@ -65,5 +71,44 @@ public class MovimientoTopDown : MonoBehaviour
     {
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, radioAtaque);
+    }
+
+    // Sistema de salud
+    public void RecibirDaño(int daño)
+    {
+        if (estaMuerto) return;
+        
+        salud -= daño;
+        spriteRenderer.color = Color.red;
+        Invoke("ResetearColor", 0.1f);
+        
+        Debug.Log("Personaje recibió daño. Salud: " + salud);
+        
+        // Actualizar barra de salud en UI
+        if (GameManager.instancia != null)
+        {
+            GameManager.instancia.ActualizarVisualizacionSalud(salud);
+        }
+        
+        if (salud <= 0)
+        {
+            Morir();
+        }
+    }
+
+    void Morir()
+    {
+        estaMuerto = true;
+        rb.linearVelocity = Vector2.zero;
+        rb.bodyType = RigidbodyType2D.Kinematic;
+        spriteRenderer.color = Color.black;
+        
+        Debug.Log("¡EL PERSONAJE HA MUERTO!");
+        
+        // Notificar al Game Manager que el juego terminó
+        if (GameManager.instancia != null)
+        {
+            GameManager.instancia.MostrarGameOver();
+        }
     }
 }
