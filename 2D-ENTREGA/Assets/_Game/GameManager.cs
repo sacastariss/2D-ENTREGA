@@ -120,7 +120,7 @@ public class GameManager : MonoBehaviour
         LayoutElement layoutElement = textoObj.GetComponent<LayoutElement>();
         if (layoutElement != null) layoutElement.enabled = false;
         
-        textoRect.anchoredPosition = new Vector2(-490, -350);
+        textoRect.anchoredPosition = new Vector2(400, -180);
         textoRect.sizeDelta = new Vector2(300, 80);
     }
 
