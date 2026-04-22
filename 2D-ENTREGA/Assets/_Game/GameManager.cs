@@ -9,6 +9,9 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI textoContador;
     private int kills = 0;
     
+    private int jeringas = 0;
+    private TextMeshProUGUI textoJeringas;
+    
     private bool juegoTerminado = false;
     private GameObject canvasGameOver;
     private TextMeshProUGUI textoSalud;
@@ -24,6 +27,8 @@ public class GameManager : MonoBehaviour
         CrearCanvasGameOver();
         // Crear la barra de salud
         CrearBarraSalud();
+        // Crear el contador de jeringas
+        CrearContadorJeringas();
         // Mostrar salud inicial
         ActualizarVisualizacionSalud(3);
     }
@@ -44,6 +49,23 @@ public class GameManager : MonoBehaviour
         kills++;
         textoContador.text = "Zombies: " + kills;
         Debug.Log("Zombies eliminados: " + kills);
+    }
+
+    public void SumarJeringa()
+    {
+        if (juegoTerminado) return;
+        
+        jeringas++;
+        if (textoJeringas != null)
+        {
+            textoJeringas.text = "Jeringas: " + jeringas;
+        }
+        Debug.Log("Jeringas recolectadas: " + jeringas);
+    }
+
+    public int ObtenerJeringas()
+    {
+        return jeringas;
     }
 
     public void ActualizarVisualizacionSalud(int saludActual)
@@ -99,6 +121,36 @@ public class GameManager : MonoBehaviour
         if (layoutElement != null) layoutElement.enabled = false;
         
         textoRect.anchoredPosition = new Vector2(-490, -350);
+        textoRect.sizeDelta = new Vector2(300, 80);
+    }
+
+    void CrearContadorJeringas()
+    {
+        // Buscar Canvas existente en la escena
+        Canvas canvasExistente = FindObjectOfType<Canvas>();
+        
+        if (canvasExistente == null)
+        {
+            Debug.LogError("No hay Canvas en la escena");
+            return;
+        }
+        
+        // Crear texto de jeringas dentro del Canvas existente
+        GameObject textoObj = new GameObject("TextoJeringas");
+        textoObj.transform.SetParent(canvasExistente.transform, false);
+        textoJeringas = textoObj.AddComponent<TextMeshProUGUI>();
+        textoJeringas.text = "Jeringas: 0";
+        textoJeringas.fontSize = 32;
+        textoJeringas.alignment = TextAlignmentOptions.TopRight;
+        textoJeringas.color = Color.white;
+        
+        RectTransform textoRect = textoObj.GetComponent<RectTransform>();
+        
+        // Desactivar Layout Elements que pudieran interferir
+        LayoutElement layoutElement = textoObj.GetComponent<LayoutElement>();
+        if (layoutElement != null) layoutElement.enabled = false;
+        
+        textoRect.anchoredPosition = new Vector2(490, -350);
         textoRect.sizeDelta = new Vector2(300, 80);
     }
 
