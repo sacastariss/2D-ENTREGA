@@ -248,7 +248,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -263,7 +263,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   m_Size: {x: 3, y: 3}
-  m_EdgeRadius: 0
+  m_EdgeRadius: 0.1
 --- !u!50 &192301127
 Rigidbody2D:
   serializedVersion: 5
@@ -1101,7 +1101,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.0068363547}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -1111,7 +1111,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1, y: 1.027346}
   m_EdgeRadius: 0
 --- !u!50 &532832709
 Rigidbody2D:
@@ -1229,6 +1229,7 @@ MonoBehaviour:
   velocidad: 10
   radioAtaque: 1.5
   teclaAtaque: 32
+  salud: 3
 --- !u!1 &566759787
 GameObject:
   m_ObjectHideFlags: 0
@@ -1827,7 +1828,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -1842,7 +1843,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   m_Size: {x: 3, y: 3}
-  m_EdgeRadius: 0
+  m_EdgeRadius: 0.1
 --- !u!50 &1494232811
 Rigidbody2D:
   serializedVersion: 5
@@ -2411,7 +2412,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -2426,7 +2427,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   m_Size: {x: 3, y: 3}
-  m_EdgeRadius: 0
+  m_EdgeRadius: 0.1
 --- !u!1 &1801912649
 GameObject:
   m_ObjectHideFlags: 0
